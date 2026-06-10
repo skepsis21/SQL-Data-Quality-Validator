@@ -1,0 +1,10 @@
+{
+  "duplicate_check": {
+    "name": "Duplicate Check",
+    "query": "SELECT customer_id, COUNT(*) FROM customers GROUP BY customer_id HAVING COUNT(*) > 1"
+  },
+  "null_check": {
+    "name": "NULL Check",
+    "query": "SELECT * FROM customers WHERE email IS NULL OR customer_id IS NULL OR age IS NULL"
+  }
+}

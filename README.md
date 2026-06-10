@@ -1,82 +1,62 @@
-# SQL-Data-Quality-Validator
-Python-powered SQL data quality validator for automated database integrity checks.
+# SQL Data Quality Validator
 
-## Overview
+A Python and SQL-based data validation framework that automatically checks database integrity and generates structured reports before data is used for analysis or reporting.
 
-Poor data quality can lead to inaccurate reports, unreliable dashboards, and poor business decisions. This project provides an automated validation framework that runs SQL-based data quality checks against a database and generates a summary report of any issues found.
+---
 
-Instead of manually writing and executing validation queries, users can run the validator to perform multiple checks in a single command.
+## 📊 Overview
 
-## Features
+In real-world analytics workflows, data must be validated before it is used for dashboards, reporting, or decision-making.
 
-- Detect duplicate records
-- Check for NULL values in required columns
-- Validate numeric ranges
-- Verify referential integrity (foreign keys)
-- Identify unexpected values
-- Generate validation reports
-- Easily extend validation rules with additional SQL files
+Poor data quality can lead to incorrect insights, broken dashboards, and unreliable business decisions.
 
-## Technologies
+This tool simulates a real data validation layer by running automated SQL-based checks on a database and producing a structured report of data quality issues.
 
-- Python
-- SQL
-- SQLite
-- Git
+It acts as a **pre-analysis validation step** commonly found in analytics engineering workflows.
 
-## Project Structure
+---
+
+## ⚙️ What This Tool Does
+
+This validator automatically:
+
+- Detects duplicate records in key fields  
+- Identifies missing (NULL) values in critical columns  
+- Validates numeric ranges and constraints  
+- Checks referential integrity between tables  
+- Flags unexpected or inconsistent values  
+- Generates a structured validation report (CSV)
+
+---
+
+## 🧠 Key Concept
+
+This project is based on a simple principle:
+
+> “Data should be validated before it is analyzed.”
+
+It demonstrates how analysts ensure data reliability before building dashboards or reports.
+
+---
+
+## 🛠️ Technologies Used
+
+- Python (automation & orchestration)
+- SQL (data validation queries)
+- SQLite (database engine)
+- JSON (configuration-driven rules)
+- Git & GitHub (version control)
+
+---
+
+## 📁 Project Structure
 
 ```text
 SQL-Data-Quality-Validator/
 │
-├── config/
-├── database/
-├── reports/
-├── sql/
-├── src/
+├── config/                 # Validation rules (JSON)
+├── database/               # Sample SQLite database
+├── reports/                # Generated validation reports
+├── sql/                    # SQL validation queries
+├── src/                    # Python validator engine
 ├── README.md
-└── requirements.txt
-```
-
-## Planned Workflow
-
-```text
-Database
-    │
-    ▼
-Python Validator
-    │
-    ├── Duplicate Check
-    ├── NULL Check
-    ├── Range Check
-    ├── Foreign Key Check
-    │
-    ▼
-Validation Report
-```
-
-## Future Improvements
-
-- Configurable validation rules using JSON
-- HTML report generation
-- Logging system
-- Support for PostgreSQL and SQL Server
-- Command-line interface (CLI)
-- Unit tests
-
-## Learning Goals
-
-This project is designed to strengthen practical skills in:
-
-- SQL
-- Python automation
-- Database validation
-- Project organization
-- Git and GitHub
-- Writing maintainable code
-
-## Status
-
-🚧 **Work in Progress**
-
-This project is actively being developed as part of my data analytics portfolio.
