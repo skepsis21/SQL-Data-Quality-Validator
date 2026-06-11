@@ -30,13 +30,11 @@ htmlcov/
 .ipynb_checkpoints/
 
 # SQLite database files
-database/*.db
-!database/sample_company.db
+*.db
 *.sqlite3
 
 # Generated reports
-reports/*
-!reports/.gitkeep
+reports/
 
 # macOS
 .DS_Store

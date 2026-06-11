@@ -1,10 +1,37 @@
 {
-  "duplicate_check": {
-    "name": "Duplicate Check",
-    "query": "SELECT customer_id, COUNT(*) FROM customers GROUP BY customer_id HAVING COUNT(*) > 1"
+  "duplicate_row_check": {
+    "name": "Duplicate Row Check (X1)",
+    "severity": "CRITICAL",
+    "query": "SELECT X1, COUNT(*) FROM credit_data GROUP BY X1 HAVING COUNT(*) > 1"
   },
-  "null_check": {
-    "name": "NULL Check",
-    "query": "SELECT * FROM customers WHERE email IS NULL OR customer_id IS NULL OR age IS NULL"
+
+  "null_check_x1": {
+    "name": "Null Check X1",
+    "severity": "WARNING",
+    "query": "SELECT * FROM credit_data WHERE X1 IS NULL"
+  },
+
+  "null_check_x5": {
+    "name": "Null Check X5",
+    "severity": "WARNING",
+    "query": "SELECT * FROM credit_data WHERE X5 IS NULL"
+  },
+
+  "outlier_check_x6": {
+    "name": "Outlier Check X6",
+    "severity": "WARNING",
+    "query": "SELECT * FROM credit_data WHERE CAST(X6 AS REAL) < 0"
+  },
+
+  "outlier_check_x7": {
+    "name": "Outlier Check X7",
+    "severity": "WARNING",
+    "query": "SELECT * FROM credit_data WHERE CAST(X7 AS REAL) < 0"
+  },
+
+  "target_check_y": {
+    "name": "Target Variable Check",
+    "severity": "CRITICAL",
+    "query": "SELECT * FROM credit_data WHERE \"default payment next month\" NOT IN (0,1)"
   }
 }
