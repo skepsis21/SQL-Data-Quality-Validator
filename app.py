@@ -1,49 +1,15 @@
 import streamlit as st
-import subprocess
 import pandas as pd
+import subprocess
 
-st.title("📊 SQL Data Quality Validator")
+st.title("Data Quality Dashboard")
 
-st.write("Run your data validation engine and view results in real time.")
+if st.button("Run Data Validation"):
+    # Trigger the validator script
+    subprocess.run(["python", "src/validator.py"])
+    st.success("Validation complete! Check the reports/ folder.")
 
-# -------------------------
-# RUN VALIDATOR BUTTON
-# -------------------------
-if st.button("Run Validation"):
-    with st.spinner("Running validation..."):
-        result = subprocess.run(
-            ["python", "src/validator.py"],
-            capture_output=True,
-            text=True
-        )
-
-    st.subheader("📟 Console Output")
-    st.text(result.stdout)
-
-    if result.stderr:
-        st.error(result.stderr)
-
-# -------------------------
-# LOAD REPORT
-# -------------------------
-st.subheader("📄 Latest CSV Report")
-
-try:
+# Display current results
+if st.button("Load Report"):
     df = pd.read_csv("reports/validation_report.csv")
-    st.dataframe(df)
-except Exception as e:
-    st.warning("No report found yet. Run validation first.")
-
-# -------------------------
-# SHOW HTML REPORT
-# -------------------------
-st.subheader("🌐 HTML Report")
-
-try:
-    with open("reports/validation_report.html", "r") as f:
-        html_content = f.read()
-
-    st.components.v1.html(html_content, height=600, scrolling=True)
-
-except:
-    st.warning("HTML report not found. Run validation first.")
+    st.table(df)

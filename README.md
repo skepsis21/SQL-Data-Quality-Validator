@@ -126,6 +126,12 @@ Severity labels
 Full rule results table
 🧾 Validation Rule Schema
 
+A[Raw CSV File] -->|load_data.py| B(SQLite Database)
+    B -->|validator.py| C{Validation Engine}
+    C -->|PASS/FAIL| D[CSV Report]
+    C -->|PASS/FAIL| E[HTML Report]
+    C -->|Display Results| F[Streamlit Dashboard]
+
 Rules are fully configurable via JSON:
 
 {
@@ -151,6 +157,9 @@ This will:
 Load data
 Run validation
 Launch Streamlit dashboard
+
+![Project Workflow](path/to/your/image.png)
+
 🎯 Why This Project Matters
 
 This project simulates a real-world data quality layer used in:

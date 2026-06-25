@@ -1,37 +1,27 @@
 {
   "duplicate_row_check": {
-    "name": "Duplicate Row Check (X1)",
+    "name": "Duplicate Row Check (ID)",
     "severity": "CRITICAL",
-    "query": "SELECT X1, COUNT(*) FROM credit_data GROUP BY X1 HAVING COUNT(*) > 1"
+    "query": "SELECT ID, COUNT(*) FROM default_of_credit GROUP BY ID HAVING COUNT(*) > 1"
   },
-
-  "null_check_x1": {
-    "name": "Null Check X1",
+  "null_check_id": {
+    "name": "Null Check ID",
     "severity": "WARNING",
-    "query": "SELECT * FROM credit_data WHERE X1 IS NULL"
+    "query": "SELECT * FROM default_of_credit WHERE ID IS NULL"
   },
-
-  "null_check_x5": {
-    "name": "Null Check X5",
+  "null_check_limit_bal": {
+    "name": "Null Check Limit_Bal",
     "severity": "WARNING",
-    "query": "SELECT * FROM credit_data WHERE X5 IS NULL"
+    "query": "SELECT * FROM default_of_credit WHERE LIMIT_BAL IS NULL"
   },
-
-  "outlier_check_x6": {
-    "name": "Outlier Check X6",
+  "outlier_check_age": {
+    "name": "Outlier Check Age",
     "severity": "WARNING",
-    "query": "SELECT * FROM credit_data WHERE CAST(X6 AS REAL) < 0"
+    "query": "SELECT * FROM default_of_credit WHERE AGE <= 0"
   },
-
-  "outlier_check_x7": {
-    "name": "Outlier Check X7",
-    "severity": "WARNING",
-    "query": "SELECT * FROM credit_data WHERE CAST(X7 AS REAL) < 0"
-  },
-
   "target_check_y": {
     "name": "Target Variable Check",
     "severity": "CRITICAL",
-    "query": "SELECT * FROM credit_data WHERE \"default payment next month\" NOT IN (0,1)"
+    "query": "SELECT * FROM default_of_credit WHERE \"default payment next month\" NOT IN (0,1)"
   }
 }
