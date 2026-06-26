@@ -1,189 +1,57 @@
-👉 clone it
-👉 install dependencies
-👉 run it
-👉 immediately see results
-
-No confusion, no missing steps.
-
-📊 SQL Data Quality Validator
+# SQL Data Quality Validator
 
 A Python and SQL-based data validation framework that automatically checks database integrity and generates structured reports before data is used for analysis or reporting.
 
-🚀 What This Project Does
+## Business Scenario
 
-This tool simulates a real-world data quality validation pipeline used in analytics and data engineering workflows.
+This tool simulates a real-world data quality validation pipeline used in analytics and data engineering workflows. It ensures that raw datasets are transformed into validated, analysis-ready data, preventing downstream reporting errors.
 
-It:
+## Solutions Implemented
 
-Loads a CSV dataset into SQLite
-Runs SQL-based validation rules (JSON-driven)
-Detects data quality issues
-Generates structured reports (CSV + HTML)
-Computes a data quality score
-Provides an interactive Streamlit dashboard
-⚙️ Features
-✔ Duplicate detection
-✔ Null value validation
-✔ Outlier detection
-✔ Target variable validation
-✔ Configurable JSON-based rule engine
-✔ Automated scoring system (0–100)
-✔ HTML + CSV reporting
-✔ Streamlit dashboard UI
-🧠 Key Concept
+* **Data Loading**: Automates the ingestion of CSV datasets into an SQLite database.
+* **Validation Engine**: Runs SQL-based validation rules driven by a flexible JSON configuration.
+* **Reporting System**: Generates comprehensive CSV and HTML reports with severity-based scoring.
+* **Interactive Dashboard**: Provides a Streamlit interface to run validations and visualize results in real-time.
 
-“Data must be validated before it is analyzed.”
+## Project Workflow
 
-This project demonstrates how raw datasets are transformed into validated, analysis-ready data.
+This diagram outlines the automated data engineering pipeline, showing how raw data moves through the validation engine to generate reports and populate the interactive dashboard.
 
-📁 Project Structure
-SQL-Data-Quality-Validator/
-│
-├── config/
-│   └── validation_rules.json      # Validation rules (SQL-based)
-│
-├── database/
-│   ├── sample_company.db          # SQLite database
-│   └── default_of_credit_card_clients.csv
-│
-├── reports/
-│   ├── validation_report.csv
-│   └── validation_report.html
-│
-├── src/
-│   ├── load_data.py               # Loads CSV → SQLite
-│   ├── validator.py              # Core validation engine
-│
-├── app.py                         # Streamlit dashboard
-├── run.py                         # One-command runner (optional)
-├── README.md
-⚙️ Installation & Setup
-1. Clone the repository
-git clone https://github.com/your-username/SQL-Data-Quality-Validator.git
-cd SQL-Data-Quality-Validator
-2. Create virtual environment (recommended)
-python -m venv .venv
-source .venv/bin/activate   # Mac/Linux
-.venv\Scripts\activate      # Windows
-3. Install dependencies
-pip install -r requirements.txt
-📦 Requirements
+![Project Workflow](docs/validator.bmp)
 
-Create a requirements.txt file with:
+## Tools Used
 
-pandas
-streamlit
+* **Language**: Python
+* **Database**: SQLite
+* **Visualization/UI**: Streamlit
+* **Data Processing**: Pandas
 
-(SQLite is built into Python)
+## Technical Skills
 
-🚀 How to Run the Project
-Step 1 — Load Data
-python src/load_data.py
-Step 2 — Run Validation Engine
-python src/validator.py
+* **Data Engineering**: Proficient in building automated ingestion and validation pipelines.
+* **SQL**: Experienced in writing complex integrity checks and rule-based queries.
+* **Configuration Management**: Skilled in designing JSON-driven engines for scalable rule sets.
+* **Business Intelligence**: Capable of creating actionable dashboards that translate technical findings into data quality scores.
 
-This generates:
+## Key Insights
 
-CSV report → reports/validation_report.csv
-HTML report → reports/validation_report.html
-Step 3 — Launch Dashboard
-streamlit run app.py
-🌐 Streamlit Dashboard
+* **Automated Scoring**: Computes a 0–100 score based on critical issues and failed checks.
+* **Rule Engine**: Configurable via JSON to handle duplicate detection, null checks, and outlier detection.
+* **Actionable Reporting**: Provides immediate feedback via terminal, HTML, and browser-based dashboards.
 
-The dashboard allows you to:
+## How to View
 
-Run validation interactively
-View data quality score
-Inspect failed rules
-View full results table
-Render HTML report inside browser
-📊 Example Output
-Terminal Output
-Duplicate Row Check → FAIL (CRITICAL)
-Null Check → PASS (WARNING)
-Outlier Check → FAIL (WARNING)
+1. **Clone the repository**:
+   `git clone https://github.com/your-username/SQL-Data-Quality-Validator.git`
+   `cd SQL-Data-Quality-Validator`
+2. **Setup**: Create a virtual environment and install dependencies:
+   `pip install -r requirements.txt`
+3. **Run Pipeline**:
+   `python src/load_data.py` (Loads Data)
+   `python src/validator.py` (Runs Validation)
+4. **Dashboard**:
+   `streamlit run app.py`
 
-OVERALL STATUS: CRITICAL FAILURE ❌
-📈 Data Quality Score
-Score = 100 - (Critical Issues × 25 + Failed Checks × 10)
+## Dashboard Preview
 
-Example:
-
-Data Quality Score: 72 / 100
-Critical Issues: 2
-Failed Checks: 4
-🌐 HTML Report
-
-Generated automatically:
-
-📄 reports/validation_report.html
-
-Includes:
-
-Score summary
-PASS / FAIL breakdown
-Severity labels
-Full rule results table
-🧾 Validation Rule Schema
-
-A[Raw CSV File] -->|load_data.py| B(SQLite Database)
-    B -->|validator.py| C{Validation Engine}
-    C -->|PASS/FAIL| D[CSV Report]
-    C -->|PASS/FAIL| E[HTML Report]
-    C -->|Display Results| F[Streamlit Dashboard]
-
-Rules are fully configurable via JSON:
-
-{
-  "rule_name": {
-    "name": "Human readable rule name",
-    "severity": "CRITICAL | WARNING",
-    "query": "SQL query executed on dataset"
-  }
-}
-🧪 Example Rule Types
-Duplicate detection (GROUP BY + HAVING COUNT)
-Null checks (IS NULL)
-Outlier detection (range filters)
-Target variable validation
-▶️ One-Command Run (Optional)
-
-If using run.py:
-
-python run.py
-
-This will:
-
-Load data
-Run validation
-Launch Streamlit dashboard
-
-![Project Workflow](path/to/your/image.png)
-
-🎯 Why This Project Matters
-
-This project simulates a real-world data quality layer used in:
-
-Data engineering pipelines
-Analytics workflows
-BI systems
-Data warehousing validation layers
-
-It ensures data is validated before analysis, improving reliability and trust.
-
-🚀 Key Takeaways
-Rule-based validation system (config-driven)
-SQL used as validation engine
-Automated reporting pipeline
-Interactive dashboard (Streamlit)
-Real-world data engineering workflow simulation
-🧠 Future Improvements
-PostgreSQL support
-Docker containerization
-Auto schema detection
-Data profiling module
-Anomaly detection (ML-based)
-Cloud deployment (Render / Railway)
-📌 Status
-
-🚧 Work in Progress — actively evolving as a data engineering portfolio project.
+![SQL Data Quality Validator](docs/dashboard_preview.bmp)
